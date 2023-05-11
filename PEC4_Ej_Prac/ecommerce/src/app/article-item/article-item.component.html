@@ -2,11 +2,11 @@
     <div class="image"><img [src]="article.imageUrl"></div>
     <div class="details">
       <div>{{article.name}}</div>
-      <div>{{article.price}} €</div>
-      <div>
+      <div [ngClass]="{'priceColor': article.isOnSale == false}"> {{article.price}} €</div>
+      <div *ngIf="article.isOnSale == true">
         <button [disabled]="article.quantityInCart == 0" (click)="decrementInCart()">-</button>
         <span>{{article.quantityInCart}}</span>
-        <button [disabled]="article.isOnSale == false" (click)="incrementInCart()">+</button>
+        <button (click)="incrementInCart()">+</button>
       </div>
     </div>
   </div>

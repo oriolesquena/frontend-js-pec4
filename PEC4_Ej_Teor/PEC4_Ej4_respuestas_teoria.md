@@ -11,14 +11,14 @@
 *Se comprende mejor la explicación con la siguiente imagen: ![ejemplo](https://dotnettutorials.net/wp-content/uploads/2018/12/word-image-45.png)*
 *Cada vez que se hace 'refresh' sin el TrackBy, se destruye toda la estructura HTML de la tabla y se vuelve a crear. En cambio, añadiendo las siguientes líneas de código:*
 
-*app.component.ts:*
-<pre><code>
+*app.component.ts:*<pre><code>
 trackByStudentID(index: number, student: any): string {
 	return student.ID;
 }
 </code></pre>
 
 *app.component.html:*
+<br>
 <code><tr *ngFor=’let student of students; trackBy:trackByStudentID’></code>
 
 **3. ¿Es posible ejecutar dos directivas estructurales simultáneamente? Explica la razón tanto si es si posible como si no lo es.**

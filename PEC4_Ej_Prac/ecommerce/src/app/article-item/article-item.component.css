@@ -10,5 +10,9 @@
   }
   
   .article-item.sale {
-    background-color: lightseagreen;
+    background-color: lightblue;
+  }
+
+  .priceColor {
+    color: grey;
   }
