@@ -1,0 +1,5 @@
+<app-article-item
+  [article]="article"
+  (quantityChange)="onQuantityChange($event)"
+  *ngFor="let article of articles"
+></app-article-item>

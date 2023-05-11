@@ -1,30 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { Article } from 'src/app/model/article'
+import { ArticleQuantityChange } from 'src/app/model/article-quantity-change';
 
 @Component({
   selector: 'app-article-item',
   templateUrl: './article-item.component.html',
-  styleUrls: ['./article-item.component.css']
+  styleUrls: ['./article-item.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ArticleItemComponent implements OnInit {
-
-  public article!: Article;
+export class ArticleItemComponent {
+  @Input() public article!: Article;
+  @Output() private quantityChange: EventEmitter<ArticleQuantityChange> = new EventEmitter();
 
   constructor() { }
 
-  ngOnInit() {
-    this.article = new Article('Zapatillas casual', 
-    'https://st2.depositphotos.com/1006269/47875/i/450/depositphotos_478758028-stock-photo-black-generic-sneakers-isolated-white.jpg',
-    59.95, true, 0);
-  }
-
   incrementInCart() {
-    this.article.quantityInCart++;
+    this.quantityChange.emit({article: this.article, changeInQuantity: 1});
   }
 
   decrementInCart() {
     if (this.article.quantityInCart > 0) {
-      this.article.quantityInCart--;
+      this.quantityChange.emit({article: this.article, changeInQuantity: -1});
     }
   }
 }

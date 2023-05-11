@@ -1,12 +1,19 @@
 <div class="article-item" [class]="article.isOnSale ? 'article-item sale' : ''">
-    <div class="image"><img [src]="article.imageUrl"></div>
-    <div class="details">
-      <div>{{article.name}}</div>
-      <div [ngClass]="{'priceColor': article.isOnSale == false}"> {{article.price}} €</div>
-      <div *ngIf="article.isOnSale == true">
-        <button [disabled]="article.quantityInCart == 0" (click)="decrementInCart()">-</button>
-        <span>{{article.quantityInCart}}</span>
-        <button (click)="incrementInCart()">+</button>
-      </div>
+  <div class="image"><img [src]="article.imageUrl" /></div>
+  <div class="details">
+    <div>{{ article.name }}</div>
+    <div [ngClass]="{priceColor: article.isOnSale == false}">
+      {{ article.price }} €
+    </div>
+    <div *ngIf="article.isOnSale == true">
+      <button
+        [disabled]="article.quantityInCart == 0"
+        (click)="decrementInCart()"
+      >
+        -
+      </button>
+      <span>{{ article.quantityInCart }}</span>
+      <button (click)="incrementInCart()">+</button>
     </div>
   </div>
+</div>
